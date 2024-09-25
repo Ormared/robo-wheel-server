@@ -1,0 +1,122 @@
+/* General styling */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #1e1e1e; /* Dark background */
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  text-align: center;
+  background-color: #2a2a2a; /* Dark container */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5); /* Darker shadow */
+  width: 300px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #ffffff; /* Light text color */
+}
+
+/* Styling for labels */
+label {
+  color: #ffffff; /* Make label text white */
+  margin-bottom: 5px; /* Optional: spacing below label */
+}
+
+/* Styling for direction buttons */
+#direction-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+button {
+  background-color: #555; /* Gray button color */
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 18px; /* Normal font size for the button */
+  width: 60px; /* Button width */
+  height: 60px; /* Button height */
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s; /* Added transition for transform */
+}
+
+/* Make arrows bigger */
+button span {
+  font-size: 30px; /* Increase font size for arrows */
+}
+
+button:hover {
+  background-color: #444; /* Darker gray on hover */
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0px 0px 4px rgba(255, 255, 255, 0.7); /* Brighter white glow on focus */
+}
+
+/* Scale effect when button is pressed */
+button:active {
+  transform: scale(0.9); /* Scale down when pressed */
+}
+
+/* Slider container */
+#slider-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#velocity {
+  -webkit-appearance: none; /* Remove default appearance */
+  width: 150px;
+  height: 8px; /* Slider height */
+  background: #777; /* Gray background for slider track */
+  border-radius: 5px;
+}
+
+#velocity::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Remove default appearance */
+  appearance: none;
+  width: 20px; /* Thumb width */
+  height: 20px; /* Thumb height */
+  border-radius: 50%; /* Circular thumb */
+  background: #fff; /* White thumb */
+  cursor: pointer;
+}
+
+#velocity::-moz-range-thumb {
+  width: 20px; /* Thumb width */
+  height: 20px; /* Thumb height */
+  border-radius: 50%; /* Circular thumb */
+  background: #fff; /* White thumb */
+  cursor: pointer;
+}
+
+#speed-display {
+  font-size: 16px;
+  margin-top: 5px;
+  color: #ffffff; /* Light text color */
+}
+
+/* Adding consistent button size */
+button:focus, input:focus {
+  outline: none;
+  box-shadow: none; /* No frame changes */
+}

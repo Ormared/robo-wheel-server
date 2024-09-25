@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Control</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Car Control</h2>
+    
+    <div id="direction-buttons">
+      <div class="button-row">
+        <button id="btn-up-left" onclick="sendDirection(-1, 1)"><span>↖</span></button>
+        <button id="btn-up" onclick="sendDirection(0, 1)"><span>↑</span></button>
+        <button id="btn-up-right" onclick="sendDirection(1, 1)"><span>↗</span></button>
+      </div>
+      <div class="button-row">
+        <button id="btn-left" onclick="sendDirection(-1, 0)"><span>←</span></button>
+        <div id="slider-container">
+          <label for="velocity">Speed:</label>
+          <input id="velocity" type="range" min="0" max="1" step="0.1" value="0.1" />
+          <span id="speed-display">0.1 m/s</span> <!-- Added "m/s" here -->
+        </div>
+        <button id="btn-right" onclick="sendDirection(1, 0)"><span>→</span></button>
+      </div>
+      <div class="button-row">
+        <button id="btn-down-left" onclick="sendDirection(-1, -1)"><span>↙</span></button>
+        <button id="btn-down" onclick="sendDirection(0, -1)"><span>↓</span></button>
+        <button id="btn-down-right" onclick="sendDirection(1, -1)"><span>↘</span></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
