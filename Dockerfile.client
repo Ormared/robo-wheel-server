@@ -1,0 +1,25 @@
+# FROM node:20
+FROM node:slim 
+
+# RUN apt-get update && apt-get install -y libstdc++6 gcc libnss3
+RUN apt-get update && \
+    apt-get install -y \
+    # libstdc++6 \ 
+    libgtkextra-dev \ 
+    libgconf2-dev \
+    libnss3 \
+    libasound2 \
+    libxtst-dev \
+    libxss1 \
+    libatk-bridge2.0-0
+
+COPY client /app
+
+WORKDIR /app
+
+RUN npm install -save-dev electron
+RUN npm install
+
+EXPOSE 5555
+
+CMD ["npx", "electron", "."]

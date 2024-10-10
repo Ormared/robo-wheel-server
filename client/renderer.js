@@ -11,7 +11,6 @@ velocitySlider.addEventListener('input', function() {
   speedDisplay.textContent = `${this.value} m/s`; // Update with "m/s"
 });
 
-// Start sending direction and velocity data
 function startMoving(dx, dy) {
   const velocity = velocitySlider.value;
 
@@ -49,3 +48,13 @@ setupButtonListeners('btn-right', 1, 0);        // →
 setupButtonListeners('btn-down-left', -1, -1);  // ↙
 setupButtonListeners('btn-down', 0, -1);        // ↓
 setupButtonListeners('btn-down-right', 1, -1);  // ↘
+
+const camera_img = document.getElementById('camera_img');
+ipcRenderer.on('camera-feed', (event, data) => {
+  const img = new Image();
+  img.src = `data:image/jpeg;base64,${data}`;
+  img.onload = () => {
+    camera_img.src = img.src;
+  };
+});
+
