@@ -17,6 +17,7 @@ def signal_handler(sig, frame):
 
 
 def main() -> NoReturn:
+
     SERIAL_PORT : str = os.getenv('SERIAL_PORT')
     logging.basicConfig(level=logging.INFO)
 
@@ -29,7 +30,7 @@ def main() -> NoReturn:
         logging.error(f"Failed to bind socket: {e}")
         sys.exit(1)
 
-    # controller = Controller(SERIAL_PORT)
+    controller = Controller(SERIAL_PORT)
 
     signal.signal(signal.SIGINT, signal_handler)
     logging.info(f"Server started, waiting for messages on {ZMQ_BIND_ADDRESS}")
@@ -40,8 +41,7 @@ def main() -> NoReturn:
                 message = socket.recv_json()
                 logging.info(f"Received message: {message}")
 
-                # response = controller.process_command(message)
-                response = {}
+                response = controller.process_command(message)
                 socket.send_json(response)
             except Exception as e:
                 logging.error(f"Error processing message: {e}")
