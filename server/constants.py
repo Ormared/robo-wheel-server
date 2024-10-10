@@ -1,9 +1,6 @@
 from typing import Final
 
 # Serial communication settings
-# SERIAL_PORT: Final[str] = '/dev/ttyUSB0'
-#SERIAL_PORT: Final[str] = '/dev/ttyS2'
-SERIAL_PORT: Final[str] = 'COM5'
 SERIAL_BAUDRATE: Final[int] = 38400
 SERIAL_TIMEOUT: Final[float] = 1.0
 
@@ -11,7 +8,7 @@ SERIAL_TIMEOUT: Final[float] = 1.0
 DEVICE_ID: Final[int] = 0xa8
 MESSAGE_LENGTH: Final[int] = 20  # 15 + 5
 MESSAGE_ID: Final[int] = 1
-MAX_FREQ: Final[int] = 10000
+MAX_FREQ: Final[int] = 20000
 
 # CRC settings
 CRC_POLYNOMIAL: Final[int] = 0x18005
