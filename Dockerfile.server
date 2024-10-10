@@ -11,6 +11,8 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 5555
+ARG SERIAL_PORT
+ENV SERIAL_PORT=${SERIAL_PORT}
 
 CMD ["python", "server_serial.py"]
 
