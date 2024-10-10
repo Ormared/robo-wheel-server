@@ -6,14 +6,14 @@ import crcmod
 import serial
 
 from constants import (
-    SERIAL_PORT, SERIAL_BAUDRATE, SERIAL_TIMEOUT,
+    SERIAL_BAUDRATE, SERIAL_TIMEOUT,
     DEVICE_ID, MESSAGE_LENGTH, MESSAGE_ID, MAX_FREQ,
     CRC_POLYNOMIAL, CRC_INITIAL, CRC_XOR_OUT
 )
 
 
 class Controller:
-    def __init__(self, port: str = SERIAL_PORT, baudrate: int = SERIAL_BAUDRATE):
+    def __init__(self, port: str, baudrate: int = SERIAL_BAUDRATE):
         try:
             self.ser = serial.Serial(port, baudrate=baudrate, timeout=SERIAL_TIMEOUT)
         except serial.SerialException as e:
@@ -22,11 +22,10 @@ class Controller:
 
         self.crc16_modbus = crcmod.mkCrcFun(CRC_POLYNOMIAL, rev=True, initCrc=CRC_INITIAL, xorOut=CRC_XOR_OUT)
 
-    # def process_command(self, command: Dict[str, float]) -> Dict[str, str]:
-    def process_command(self, theta, power, turn) -> Dict[str, str]:
-        # theta = command.get('theta', 0)
-        # power = command.get('power', 0)
-        # turn = command.get('turn', 0)
+    def process_command(self, command: Dict[str, float]) -> Dict[str, str]:
+        theta = command.get('theta', 0)
+        power = command.get('power', 0)
+        turn = command.get('turn', 0)
 
         motor_freqs = self._calculate_frequencies(theta, power, turn)
         try:
@@ -42,10 +41,10 @@ class Controller:
         cos = math.cos(theta - math.pi / 4)
         max_ = max(abs(sin), abs(cos))
 
-        MotorAFreq = power * cos / max_ + turn
-        MotorBFreq = power * sin / max_ - turn
-        MotorCFreq = power * sin / max_ + turn
-        MotorDFreq = power * cos / max_ - turn
+        MotorCFreq = power * cos / max_ + turn
+        MotorDFreq = power * sin / max_ - turn
+        MotorBFreq = power * sin / max_ + turn
+        MotorAFreq = power * cos / max_ - turn
 
         if power + abs(turn) > 1:
             scale = power + abs(turn)
@@ -58,7 +57,7 @@ class Controller:
         MotorBFreq = round(MotorBFreq * MAX_FREQ)
         MotorCFreq = round(MotorCFreq * MAX_FREQ)
         MotorDFreq = round(MotorDFreq * MAX_FREQ)
-
+        print(MotorAFreq, MotorBFreq, MotorCFreq, MotorDFreq)
         return MotorAFreq, MotorBFreq, MotorCFreq, MotorDFreq
 
     def _move(self, MotorAFreq: int, MotorBFreq: int, MotorCFreq: int, MotorDFreq: int) -> None:

@@ -42,14 +42,15 @@ def main() -> NoReturn:
         while True:
             try:
                 message = socket.recv_json()
-                dx = message['dx']
-                dy = message['dy']
-                power = message['velocity']
+                # dx = message['dx']
+                # dy = message['dy']
+                # power = message['velocity']
 
-                logging.info(f"Received message: {message}")
+                # logging.info(f"Received message: {message}")
                 theta = atan2(dy,dx)
                 
-                response = controller.process_command(theta, power, 0)
+                # response = controller.process_command(theta, power, 0)
+                response = controller.process_command(message)
                 socket.send_json(response)
             except Exception as e:
                 logging.error(f"Error processing message: {e}")
