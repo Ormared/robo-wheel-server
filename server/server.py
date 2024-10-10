@@ -2,6 +2,7 @@ import zmq
 import cv2
 import pyrealsense2 as rs
 import base64
+from math import atan2
 
 context = zmq.Context()
 
@@ -32,7 +33,9 @@ print("Server is running...")
 while True:
     try:
         message = control_socket.recv_json()
-    
+
+        theta = atan2(dy, dx)
+
         dx = message['dx']
         dy = message['dy']
         velocity = message['velocity']

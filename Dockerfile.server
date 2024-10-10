@@ -12,8 +12,8 @@ RUN pip install -r requirements.txt
 
 EXPOSE 5555
 
-CMD ["python", "server.py"]
+CMD ["python", "server_serial.py"]
 
-# docker build -t zmq-server -f Dockerfile.server.
+# docker build -t zmq-server -f Dockerfile.server .
 # docker run -it -p 5555:5555 zmq-server
 # docker run -it -d -p 5555:5555 zmq-server
