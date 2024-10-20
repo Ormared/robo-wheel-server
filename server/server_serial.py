@@ -17,8 +17,8 @@ def signal_handler(sig, frame):
 
 
 def main() -> NoReturn:
-    # SERIAL_PORT = "/dev/ttyS1"
-    SERIAL_PORT : str = os.getenv('SERIAL_PORT')
+    SERIAL_PORT = "/dev/ttyS1"
+    # SERIAL_PORT : str = os.getenv('SERIAL_PORT')
     logging.basicConfig(level=logging.INFO)
 
     context = zmq.Context()
