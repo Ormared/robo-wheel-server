@@ -60,10 +60,10 @@ https://index.ros.org/packages/
 - (IMPORTANT) controllers vs drivers(hardware interfaces) https://answers.ros.org/question/12182/controllers-vs-drivers/
 - rosbridge 
     - https://foxglove.dev/blog/using-rosbridge-with-ros2
- 
-## Useful resources
-- Book from some participats of eurobot contest https://ecam-eurobot.github.io/Tutorials/mechanical/mecanum.html
     - https://robotwebtools.github.io/
     - https://github.com/RobotWebTools/rosbridge_suite
+  
+## Useful resources
+- Book from some participats of eurobot contest https://ecam-eurobot.github.io/Tutorials/mechanical/mecanum.html
 
 
